@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "betting-qa"
+version = "0.1.0"
+description = "QA automation framework — Sports Betting single bet placement"
+authors = ["QA Engineer"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+selenium = "^4.20"
+pytest = "^8.2"
+pytest-html = "^4.1"
+requests = "^2.31"
+python-dotenv = "^1.0"
+webdriver-manager = "^4.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest-xdist = "^3.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "--html=reports/report.html --self-contained-html -v"
+markers = [
+    "revenue_critical: Tests that are critical for revenue / money flow",
+    "ui: end-to-end browser tests",
+    "api: direct API tests",
+    "smoke: fast smoke suite",
+]
